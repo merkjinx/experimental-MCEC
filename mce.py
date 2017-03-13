@@ -1,6 +1,14 @@
 import socket
 import sys
 
+working = 0
+if working:
+    print "Yay you enabled working mode have fun"
+else:
+    print "This program is not configured"
+    print "Script kiddies piss off"
+    sys.exit()
+
 try:
     host = sys.argv[1]
     #os = sys.argv[2]
