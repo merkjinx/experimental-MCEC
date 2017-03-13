@@ -28,4 +28,5 @@ while 1:
     s.send(sendbuffer)
     s.recv(4906)
     s.send(secondbuffer)
+    s.setsockopt(SOL_SOCKET, TCP_WINDOW_CLAMP, 5)
     s.close()
