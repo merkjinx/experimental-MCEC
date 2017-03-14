@@ -17,7 +17,7 @@ crash = "\x41" # developer note change if you want to
 crashmultiplier = 1
 
 while 1:
-    buffer = secondbuffer.decode("hex") + crash * crashmultiplier
+    buffer = crash * crashmultiplier
     
     s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     connect=s.connect((host,port))
@@ -26,16 +26,19 @@ while 1:
     
     recv = s.recv(4096)
     
+    s.send(secondbuffer)
+    recv1 = s.recv(4096)
     s.send(buffer)
-    
     if recv:
        print "finished illiteration %s " % crashmultiplier
     else:
        print "crash detected or no data returned @ illiteration %s" % crashmultiplier
        sys.exit()
-       
-    
-    s.close()
+    if recv:
+       print "Recv2 successfull"
+    else:
+       print "crash detected or no data returned from receiver 2 @ illiteration %s"
+        s.close()
     
     time.sleep(1) # change if you want 
     crashmultiplier = crashmultiplier + 1
